@@ -2,25 +2,88 @@ body {
     display:flex;
     flex-direction: column;
     margin:0;
+    padding:0;
+    background-color: blanchedalmond;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .container {
     display:flex;
     flex-direction: column;
-    justify-content: space-between;
-    flex:1;
+    align-items: center;
 }
 
-.row {
+#grid {
     display:flex;
-    flex:1;
-    justify-content: space-evenly;
+    flex-wrap:wrap;
+    height:750px;
+    width:750px;
+    border: 2px solid black;
+    margin:20px 100px;
+    background-color: white;
 }
 
-.col {
+p {
+    font-weight: 900;
+}
+
+.box {
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.box:hover {
+    background-color: antiquewhite !important; 
+}
+
+.toolbar {
     display:flex;
-    flex:1;
-    background-color: red;
-    width:100px;
-    height:100px;
+    gap:20px;
+}
+
+.toolbar button {
+    width:40px;
+    height:40px;
+    background-color: antiquewhite;
+    border-radius:25px;
+    border-color:antiquewhite;
+}
+
+.toolbar button:hover {
+    background-color: rgb(233, 217, 197);
+}
+
+.toolbar .erase {
+    width:80px;
+    font-weight:800;
+    text-align:center;
+}
+
+.toolbar .fill {
+    width:80px;
+    font-weight:800;
+    text-align:center;
+}
+
+.toolbar .randomBtn {
+    width:80px;
+    font-weight:900;
+    text-align:center;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toolbar .randomBtn p {
+    background: linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #415eff, #f9a825, #ff5722);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gridSize {
+    width:auto;
+    height:30px;
+    margin-top:30px;
+    background-color:white;
+    font-size:20px;
 }
