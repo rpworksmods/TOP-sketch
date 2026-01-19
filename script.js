@@ -56,16 +56,35 @@ function createGrid(columns) {
         const box = document.createElement("div");
         box.classList.add("box");
         box.style.backgroundColor = "white";
+        box.style.opacity = 1;
         box.style.width = `${boxSize}px`;
         box.style.height = `${boxSize}px`;
 
-        box.addEventListener("mouseover", () => {
+        box.addEventListener("mouseover", (event) => {
             if (isMouseDown) {
                 if (selectedColor == "random") {
                     var randomColor = Math.floor(Math.random()*16777215).toString(16);
-                    box.style.backgroundColor = "#" + randomColor;
+                    event.target.style.backgroundColor = "#" + randomColor;
                 } else {
-                    box.style.backgroundColor = selectedColor;
+                    // Get current opacity value
+                    let opacity = parseFloat(event.target.style.opacity);
+                    console.log(opacity);
+
+                    if (selectedColor != "white") {
+                        // If 1, set to 0.1
+                        if (opacity >= 1) {
+                            console.log('More than 1')
+                            opacity = 0.1;
+                        } else { // If less than one, increment by 0.1 each time
+                            opacity += 0.1
+                            console.log(opacity);
+                        }
+                    } else {
+                        opacity = 1;
+                    }
+
+                    event.target.style.opacity = opacity;
+                    event.target.style.backgroundColor = selectedColor;
                 }
             }
         })
@@ -75,10 +94,27 @@ function createGrid(columns) {
                 var randomColor = Math.floor(Math.random()*16777215).toString(16);
                 event.target.style.backgroundColor = "#" + randomColor;
             } else {
+
+                // Get current opacity value
+                let opacity = parseFloat(event.target.style.opacity);
+                console.log(opacity);
+
+                if (selectedColor != "white") {
+                    // If 1, set to 0.1
+                    if (opacity >= 1) {
+                        console.log('More than 1')
+                        opacity = 0.1;
+                    } else { // If less than one, increment by 0.1 each time
+                        opacity += 0.1
+                        console.log(opacity);
+                    }
+                } else {
+                    opacity = 1;
+                }
+
+                event.target.style.opacity = opacity;
                 event.target.style.backgroundColor = selectedColor;
             }
-
-            event.target.classList.add("selected")
         })
 
         grid.appendChild(box);

@@ -34,6 +34,7 @@ p {
 
 .box:hover {
     background-color: antiquewhite !important; 
+    opacity:0.5 !important;
 }
 
 .toolbar {
